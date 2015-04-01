@@ -101,7 +101,6 @@ parse_compilation(struct media_file_info *mfi, char *compilation_string)
 {
   uint32_t compilation = 0;
 
-  printf("parse_compilation\n");
   if (safe_atou32(compilation_string, &compilation) == 0)
 	{
 	  mfi->compilation = compilation == 1 ? 1 : 0;
