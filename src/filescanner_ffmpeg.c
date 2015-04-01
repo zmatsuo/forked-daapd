@@ -96,6 +96,20 @@ parse_disc(struct media_file_info *mfi, char *disc_string)
   return parse_slash_separated_ints(disc_string, disc, total_discs);
 }
 
+static int
+parse_compilation(struct media_file_info *mfi, char *compilation_string)
+{
+  uint32_t compilation = 0;
+
+  printf("parse_compilation\n");
+  if (safe_atou32(compilation_string, &compilation) == 0)
+	{
+	  mfi->compilation = compilation == 1 ? 1 : 0;
+	}
+
+  return 1;
+}
+
 /* Lookup is case-insensitive, first occurrence takes precedence */
 static const struct metadata_map md_map_generic[] =
   {
@@ -118,6 +132,7 @@ static const struct metadata_map md_map_generic[] =
     { "title-sort",   0, mfi_offsetof(title_sort),         NULL },
     { "artist-sort",  0, mfi_offsetof(artist_sort),        NULL },
     { "album-sort",   0, mfi_offsetof(album_sort),         NULL },
+    { "compilation",  0, mfi_offsetof(compilation),        parse_compilation },
 
     { NULL,           0, 0,                                NULL }
   };
