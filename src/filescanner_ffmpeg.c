@@ -102,9 +102,9 @@ parse_compilation(struct media_file_info *mfi, char *compilation_string)
   uint32_t compilation = 0;
 
   if (safe_atou32(compilation_string, &compilation) == 0)
-	{
-	  mfi->compilation = compilation == 1 ? 1 : 0;
-	}
+    {
+      mfi->compilation = compilation == 1 ? 1 : 0;
+    }
 
   return 1;
 }
